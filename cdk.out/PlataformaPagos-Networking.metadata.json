@@ -1,0 +1,221 @@
+{
+  "/PlataformaPagos-Networking": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Ambiente",
+          "value": "dev"
+        },
+        {
+          "key": "Proyecto",
+          "value": "plataforma-pagos-aws"
+        }
+      ]
+    }
+  ],
+  "/PlataformaPagos-Networking/VpcId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcId"
+    }
+  ],
+  "/PlataformaPagos-Networking/VpcCidr": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcCidr"
+    }
+  ],
+  "/PlataformaPagos-Networking/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/PlataformaPagos-Networking/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCB9E5F0B4"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCIGWB7E252D3"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCVPCGW99B986DC"
+    }
+  ],
+  "/PlataformaPagos-Networking/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1Subnet4138A327"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1RouteTable61020656"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1RouteTableAssociationECBB69B0"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1DefaultRoute261FBCAD"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1EIPAB1B077D"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet1NATGateway8EC1AF9B"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet2Subnet0E688B1D"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet2RouteTableCD26515B"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet2RouteTableAssociation80552A0A"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/publicaSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCpublicaSubnet2DefaultRouteD1656D3C"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet1Subnet5867FBBB"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet1RouteTableD0F0F91E"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet1RouteTableAssociation615A467F"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet1DefaultRouteCBB7A7F7"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet2Subnet6A9402E7"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet2RouteTableE20FC20E"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet2RouteTableAssociationFDA09367"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/privadaSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCprivadaSubnet2DefaultRoute4C644DFC"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet1Subnet2F3C87DF"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet1RouteTable041542F1"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet1RouteTableAssociationE8F214F0"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet2Subnet460DE0D4"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet2RouteTable68BBA148"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/aisladaSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCaisladaSubnet2RouteTableAssociationE4278F98"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/S3Endpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCS3Endpoint18C9C7CA"
+    }
+  ],
+  "/PlataformaPagos-Networking/VPC/DynamoDBEndpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VPCDynamoDBEndpoint7443A79B"
+    }
+  ]
+}

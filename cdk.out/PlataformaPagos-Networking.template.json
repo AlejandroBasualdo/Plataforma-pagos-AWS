@@ -1,0 +1,817 @@
+{
+ "Description": "VPC, subnets y endpoints de red para la plataforma de pagos",
+ "Resources": {
+  "VPCB9E5F0B4": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "plataforma-pagos-vpc"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/Resource"
+   }
+  },
+  "VPCpublicaSubnet1Subnet4138A327": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "publica"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/Subnet"
+   }
+  },
+  "VPCpublicaSubnet1RouteTable61020656": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/RouteTable"
+   }
+  },
+  "VPCpublicaSubnet1RouteTableAssociationECBB69B0": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCpublicaSubnet1RouteTable61020656"
+    },
+    "SubnetId": {
+     "Ref": "VPCpublicaSubnet1Subnet4138A327"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/RouteTableAssociation"
+   }
+  },
+  "VPCpublicaSubnet1DefaultRoute261FBCAD": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VPCIGWB7E252D3"
+    },
+    "RouteTableId": {
+     "Ref": "VPCpublicaSubnet1RouteTable61020656"
+    }
+   },
+   "DependsOn": [
+    "VPCVPCGW99B986DC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/DefaultRoute"
+   }
+  },
+  "VPCpublicaSubnet1EIPAB1B077D": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/EIP"
+   }
+  },
+  "VPCpublicaSubnet1NATGateway8EC1AF9B": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VPCpublicaSubnet1EIPAB1B077D",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VPCpublicaSubnet1Subnet4138A327"
+    },
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VPCpublicaSubnet1DefaultRoute261FBCAD",
+    "VPCpublicaSubnet1RouteTableAssociationECBB69B0"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet1/NATGateway"
+   }
+  },
+  "VPCpublicaSubnet2Subnet0E688B1D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "publica"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet2/Subnet"
+   }
+  },
+  "VPCpublicaSubnet2RouteTableCD26515B": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/publicaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet2/RouteTable"
+   }
+  },
+  "VPCpublicaSubnet2RouteTableAssociation80552A0A": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCpublicaSubnet2RouteTableCD26515B"
+    },
+    "SubnetId": {
+     "Ref": "VPCpublicaSubnet2Subnet0E688B1D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet2/RouteTableAssociation"
+   }
+  },
+  "VPCpublicaSubnet2DefaultRouteD1656D3C": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VPCIGWB7E252D3"
+    },
+    "RouteTableId": {
+     "Ref": "VPCpublicaSubnet2RouteTableCD26515B"
+    }
+   },
+   "DependsOn": [
+    "VPCVPCGW99B986DC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/publicaSubnet2/DefaultRoute"
+   }
+  },
+  "VPCprivadaSubnet1Subnet5867FBBB": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "privada"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/privadaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet1/Subnet"
+   }
+  },
+  "VPCprivadaSubnet1RouteTableD0F0F91E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/privadaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet1/RouteTable"
+   }
+  },
+  "VPCprivadaSubnet1RouteTableAssociation615A467F": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCprivadaSubnet1RouteTableD0F0F91E"
+    },
+    "SubnetId": {
+     "Ref": "VPCprivadaSubnet1Subnet5867FBBB"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet1/RouteTableAssociation"
+   }
+  },
+  "VPCprivadaSubnet1DefaultRouteCBB7A7F7": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VPCpublicaSubnet1NATGateway8EC1AF9B"
+    },
+    "RouteTableId": {
+     "Ref": "VPCprivadaSubnet1RouteTableD0F0F91E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet1/DefaultRoute"
+   }
+  },
+  "VPCprivadaSubnet2Subnet6A9402E7": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "privada"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/privadaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet2/Subnet"
+   }
+  },
+  "VPCprivadaSubnet2RouteTableE20FC20E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/privadaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet2/RouteTable"
+   }
+  },
+  "VPCprivadaSubnet2RouteTableAssociationFDA09367": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCprivadaSubnet2RouteTableE20FC20E"
+    },
+    "SubnetId": {
+     "Ref": "VPCprivadaSubnet2Subnet6A9402E7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet2/RouteTableAssociation"
+   }
+  },
+  "VPCprivadaSubnet2DefaultRoute4C644DFC": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VPCpublicaSubnet1NATGateway8EC1AF9B"
+    },
+    "RouteTableId": {
+     "Ref": "VPCprivadaSubnet2RouteTableE20FC20E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/privadaSubnet2/DefaultRoute"
+   }
+  },
+  "VPCaisladaSubnet1Subnet2F3C87DF": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "10.0.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "aislada"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/aisladaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet1/Subnet"
+   }
+  },
+  "VPCaisladaSubnet1RouteTable041542F1": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/aisladaSubnet1"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet1/RouteTable"
+   }
+  },
+  "VPCaisladaSubnet1RouteTableAssociationE8F214F0": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCaisladaSubnet1RouteTable041542F1"
+    },
+    "SubnetId": {
+     "Ref": "VPCaisladaSubnet1Subnet2F3C87DF"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet1/RouteTableAssociation"
+   }
+  },
+  "VPCaisladaSubnet2Subnet460DE0D4": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "10.0.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "aislada"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/aisladaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet2/Subnet"
+   }
+  },
+  "VPCaisladaSubnet2RouteTable68BBA148": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "PlataformaPagos-Networking/VPC/aisladaSubnet2"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet2/RouteTable"
+   }
+  },
+  "VPCaisladaSubnet2RouteTableAssociationE4278F98": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VPCaisladaSubnet2RouteTable68BBA148"
+    },
+    "SubnetId": {
+     "Ref": "VPCaisladaSubnet2Subnet460DE0D4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/aisladaSubnet2/RouteTableAssociation"
+   }
+  },
+  "VPCIGWB7E252D3": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "plataforma-pagos-vpc"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/IGW"
+   }
+  },
+  "VPCVPCGW99B986DC": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "VPCIGWB7E252D3"
+    },
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/VPCGW"
+   }
+  },
+  "VPCS3Endpoint18C9C7CA": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "RouteTableIds": [
+     {
+      "Ref": "VPCprivadaSubnet1RouteTableD0F0F91E"
+     },
+     {
+      "Ref": "VPCprivadaSubnet2RouteTableE20FC20E"
+     },
+     {
+      "Ref": "VPCpublicaSubnet1RouteTable61020656"
+     },
+     {
+      "Ref": "VPCpublicaSubnet2RouteTableCD26515B"
+     },
+     {
+      "Ref": "VPCaisladaSubnet1RouteTable041542F1"
+     },
+     {
+      "Ref": "VPCaisladaSubnet2RouteTable68BBA148"
+     }
+    ],
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".s3"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "plataforma-pagos-vpc"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcEndpointType": "Gateway",
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/S3Endpoint/Resource"
+   }
+  },
+  "VPCDynamoDBEndpoint7443A79B": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "RouteTableIds": [
+     {
+      "Ref": "VPCprivadaSubnet1RouteTableD0F0F91E"
+     },
+     {
+      "Ref": "VPCprivadaSubnet2RouteTableE20FC20E"
+     },
+     {
+      "Ref": "VPCpublicaSubnet1RouteTable61020656"
+     },
+     {
+      "Ref": "VPCpublicaSubnet2RouteTableCD26515B"
+     },
+     {
+      "Ref": "VPCaisladaSubnet1RouteTable041542F1"
+     },
+     {
+      "Ref": "VPCaisladaSubnet2RouteTable68BBA148"
+     }
+    ],
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".dynamodb"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Ambiente",
+      "Value": "dev"
+     },
+     {
+      "Key": "Name",
+      "Value": "plataforma-pagos-vpc"
+     },
+     {
+      "Key": "Proyecto",
+      "Value": "plataforma-pagos-aws"
+     }
+    ],
+    "VpcEndpointType": "Gateway",
+    "VpcId": {
+     "Ref": "VPCB9E5F0B4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/VPC/DynamoDBEndpoint/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WOwQrCQAxEv8X7dpXiwWsRES9aqvQqaRoxtmZLN9si4r9LtVoIzMxjSBLbeLmyixn0PsKyimou7POogJWB3p8JY/vMGzTri+Tp2qShqBmPoRDSgU0uc0HpBEVNE59Y4r1DBmUn//JgNrt0kD3oFpR6eJi05Q6UpsU7UWqF/oXvJ2NKVAGvdxI1I8kb3EjZOBYdq7/4Mhl5F1r8XD4EbYK+jLiS7M3Pu3hhh5ndPHPUBlG+k82++gbjR/BSJgEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "PlataformaPagos-Networking/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "VpcId": {
+   "Description": "ID de la VPC principal",
+   "Value": {
+    "Ref": "VPCB9E5F0B4"
+   }
+  },
+  "VpcCidr": {
+   "Description": "Rango de IPs de la VPC",
+   "Value": {
+    "Fn::GetAtt": [
+     "VPCB9E5F0B4",
+     "CidrBlock"
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

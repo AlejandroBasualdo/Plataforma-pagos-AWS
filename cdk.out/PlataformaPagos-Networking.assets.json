@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "7863cf3916298397feebf43912221e68985afb466def27679d8e58e9cfac5e27": {
+      "displayName": "PlataformaPagos-Networking Template",
+      "source": {
+        "path": "PlataformaPagos-Networking.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "132769310727-us-east-1-2d761b24": {
+          "bucketName": "cdk-hnb659fds-assets-132769310727-us-east-1",
+          "objectKey": "7863cf3916298397feebf43912221e68985afb466def27679d8e58e9cfac5e27.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::132769310727:role/cdk-hnb659fds-file-publishing-role-132769310727-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
