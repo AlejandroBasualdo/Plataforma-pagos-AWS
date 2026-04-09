@@ -1,0 +1,21 @@
+{
+  "name": "plataforma-pagos-aws",
+  "version": "1.0.0",
+  "description": "Plataforma fintech de pagos en tiempo real sobre AWS. Event-sourcing, CQRS, multi-región activo-activo, seguridad zero-trust y cumplimiento PCI-DSS automatizado. Construido con CDK, Lambda, DynamoDB y Step Functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-cdk-lib": "^2.248.0",
+    "constructs": "^10.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
